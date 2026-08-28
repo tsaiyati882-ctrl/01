@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f8f3">
+<meta name="description" content="Nutrição prática — informações simples para uma alimentação mais equilibrada.">
+<title>Nutrição Essencial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root{
+  --bg:#0b1220;
+  --surface:#111a2e;
+  --surface-2:#17233b;
+  --text:#f5f7fb;
+  --muted:#a7b2c6;
+  --primary:#7c5cff;
+  --primary-2:#22d3ee;
+  --accent:#a3e635;
+  --line:rgba(255,255,255,.10);
+  --shadow:0 24px 70px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"DM Sans",system-ui,sans-serif;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(124,92,255,.22),transparent 30%),
+    radial-gradient(circle at 92% 12%,rgba(34,211,238,.13),transparent 26%),
+    linear-gradient(145deg,#080d18,#101a2d 55%,#0b1220);
+  padding:18px;
+  -webkit-font-smoothing:antialiased;
+}
+.container{width:min(100%,900px);margin:auto}
+.header{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-bottom:16px;padding:9px 2px 17px;
+  border-bottom:1px solid var(--line)
+}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{
+  width:43px;height:43px;border-radius:14px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--primary),#4f46e5);
+  color:#fff;font-family:"Plus Jakarta Sans",sans-serif;
+  font-size:19px;font-weight:800;
+  box-shadow:0 10px 24px rgba(124,92,255,.25)
+}
+.logo strong{font-size:15px;font-weight:800}
+.logo small{display:block;margin-top:3px;color:var(--muted);font-size:10px}
+.badge{
+  padding:7px 11px;border:1px solid rgba(34,211,238,.18);
+  border-radius:999px;background:rgba(34,211,238,.08);
+  color:#8deaf7;font-size:9px;font-weight:800
+}
+.hero{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center;
+  position:relative;overflow:hidden;padding:clamp(30px,6vw,55px);
+  border:1px solid var(--line);border-radius:28px;
+  background:linear-gradient(145deg,rgba(23,35,59,.96),rgba(14,24,42,.94));
+  box-shadow:var(--shadow)
+}
+.hero:before{
+  content:"";position:absolute;width:290px;height:290px;border-radius:50%;
+  right:-125px;top:-135px;
+  background:radial-gradient(circle,rgba(124,92,255,.28),transparent 68%)
+}
+.hero:after{
+  content:"";position:absolute;width:180px;height:180px;border-radius:50%;
+  left:-120px;bottom:-120px;background:rgba(34,211,238,.08)
+}
+.kicker{
+  position:relative;display:inline-flex;align-items:center;
+  padding:7px 11px;margin-bottom:17px;border-radius:999px;
+  background:rgba(163,230,53,.10);border:1px solid rgba(163,230,53,.18);
+  color:#c7f36b;font-size:9px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase
+}
+.hero h1{
+  position:relative;max-width:570px;margin-bottom:16px;
+  font-family:"Plus Jakarta Sans",sans-serif;
+  font-size:clamp(38px,6vw,59px);line-height:1.03;
+  letter-spacing:-.06em;font-weight:800
+}
+.hero h1 span{
+  background:linear-gradient(90deg,#9b87ff,#48dcec);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{
+  position:relative;max-width:570px;margin-bottom:25px;
+  color:var(--muted);font-size:14px;line-height:1.75
+}
+.cta{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  gap:11px;width:min(100%,350px);min-height:52px;padding:14px 20px;
+  border-radius:13px;background:linear-gradient(135deg,var(--primary),#6046dc);
+  color:#fff;text-decoration:none;font-size:13px;font-weight:800;
+  box-shadow:0 13px 28px rgba(124,92,255,.25);
+  transition:.2s ease
+}
+.cta:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.cta span{font-size:17px}
+.plate{
+  min-height:285px;border-radius:23px;
+  display:grid;place-items:center;position:relative;
+  background:linear-gradient(145deg,#182746,#111c31);
+  border:1px solid rgba(255,255,255,.08)
+}
+.plate-circle{
+  width:205px;height:205px;border-radius:50%;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;
+  background:#0b1220;border:7px solid rgba(255,255,255,.9);
+  box-shadow:0 22px 45px rgba(0,0,0,.32)
+}
+.food{display:flex;align-items:center;justify-content:center;font-size:42px}
+.food:nth-child(1){background:#315e4a}.food:nth-child(2){background:#80692f}
+.food:nth-child(3){background:#75423b}.food:nth-child(4){background:#50406f}
+.section-title{
+  font-family:"Plus Jakarta Sans",sans-serif;font-size:29px;
+  letter-spacing:-.04em;margin:32px 0 14px
+}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{
+  min-height:170px;padding:19px;border:1px solid var(--line);
+  border-radius:18px;background:rgba(17,26,46,.86);
+  box-shadow:0 10px 28px rgba(0,0,0,.14);
+  transition:.2s ease
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.38);box-shadow:0 17px 34px rgba(0,0,0,.2)}
+.card:nth-child(2){background:linear-gradient(145deg,rgba(23,35,59,.95),rgba(19,45,48,.88))}
+.card:nth-child(3){background:linear-gradient(145deg,rgba(30,25,54,.95),rgba(20,28,48,.9))}
+.icon{
+  width:38px;height:38px;border-radius:11px;
+  display:grid;place-items:center;margin-bottom:17px;
+  background:rgba(124,92,255,.13);color:#b8adff;font-size:18px
+}
+.card h3{font-size:14px;margin-bottom:7px}
+.card p{font-size:11px;color:var(--muted);line-height:1.65}
+.tips{
+  margin-top:12px;padding:25px;border-radius:22px;
+  background:linear-gradient(135deg,#6d50e9,#3f7edc);
+  box-shadow:0 18px 40px rgba(67,71,180,.2)
+}
+.tips h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:27px;letter-spacing:-.04em;margin-bottom:14px}
+.tips ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tips li{
+  padding:11px 12px;border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;background:rgba(0,0,0,.12);
+  font-size:12px;line-height:1.5
+}
+.tips li:before{content:"✓";font-weight:800;margin-right:8px;color:var(--accent)}
+.footer{text-align:center;color:#7f8ba0;font-size:10px;padding:22px 5px}
+@media(max-width:680px){
+  body{padding:10px}
+  .header{padding:7px 2px 12px}
+  .logo-mark{width:39px;height:39px;border-radius:12px}
+  .logo strong{font-size:14px}.logo small{font-size:9px}.badge{font-size:8px}
+  .hero{grid-template-columns:1fr;padding:27px 18px;border-radius:21px;gap:22px}
+  .hero h1{font-size:clamp(35px,11vw,48px)}
+  .hero p{font-size:13px;line-height:1.65}
+  .cta{width:100%}
+  .plate{min-height:220px}
+  .plate-circle{width:165px;height:165px}.food{font-size:33px}
+  .section-title{font-size:26px;margin-top:27px}
+  .grid{grid-template-columns:1fr;gap:9px}
+  .card{
+    min-height:auto;display:grid;grid-template-columns:40px 1fr;
+    column-gap:12px;align-items:center;padding:15px
+  }
+  .icon{grid-row:span 2;margin:0}
+  .tips{padding:20px;border-radius:18px}
+  .tips ul{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{transition:none!important}
+}
+</style>
+</head>
+<body>
+<main class="container">
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">N</div>
+    <div><strong>Nutrição Essencial</strong><small>Informação para o dia a dia</small></div>
+  </div>
+  <div class="badge">Alimentação equilibrada</div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="kicker">Nutrição sem complicação</div>
+    <h1>Comer bem é <span>cuidar de você.</span></h1>
+    <p>Uma alimentação equilibrada pode fazer parte da rotina de forma simples. Conheça princípios básicos para montar refeições variadas, nutritivas e adequadas ao seu dia.</p>
+    <a class="cta" href="#principios">Conhecer os princípios <span>↓</span></a>
+  </div>
+  <div class="plate" aria-hidden="true">
+    <div class="plate-circle">
+      <div class="food">🥦</div><div class="food">🍚</div>
+      <div class="food">🍓</div><div class="food">🥜</div>
+    </div>
+  </div>
+</section>
+
+<h2 class="section-title" id="principios">Princípios de uma boa alimentação</h2>
+<section class="grid">
+  <article class="card"><div class="icon">🥗</div><h3>Variedade</h3><p>Combine diferentes grupos de alimentos para ampliar a variedade de nutrientes da alimentação.</p></article>
+  <article class="card"><div class="icon">💧</div><h3>Hidratação</h3><p>A água é essencial para o funcionamento do organismo. Mantenha-se hidratado ao longo do dia.</p></article>
+  <article class="card"><div class="icon">🌾</div><h3>Qualidade</h3><p>Dê preferência a alimentos in natura ou minimamente processados sempre que possível.</p></article>
+</section>
+
+<section class="tips">
+  <h2>Pequenas escolhas, grandes hábitos</h2>
+  <ul>
+    <li>Inclua frutas, verduras e legumes nas refeições.</li>
+    <li>Varie as fontes de proteínas ao longo da semana.</li>
+    <li>Observe os sinais de fome e saciedade.</li>
+    <li>Planeje as refeições para facilitar boas escolhas.</li>
+  </ul>
+</section>
+
+<footer class="footer">Conteúdo educativo. Necessidades nutricionais podem variar de pessoa para pessoa.</footer>
+</main>
+</body>
+</html>
