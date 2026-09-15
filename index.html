@@ -1,206 +1,391 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1020">
-<meta name="description" content="Hub digital para explorar ideias, tendências e novas possibilidades.">
-<title>ATELIÊ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Oportunidades</title>
+  <style>
+    :root {
+      --navy: #EDEBFF;
+      --navy-dark: #17152B;
+      --green: #8B5CF6;
+      --text: #F5F4FA;
+      --muted: #B6B2C9;
+      --line: #302B48;
+      --page: #090812;
+    }
 
-:root{
-  --bg:#f4efe6; --surface:#fffaf2; --surface-2:#fffaf2;
-  --text:#171717; --muted:#68645d; --primary:#e96f51;
-  --primary-dark:#bf4d35; --accent:#6d806f; --gold:#f2c75c;
-  --line:#273044; --shadow:0 25px 70px rgba(0,0,0,.35);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:"DM Sans",system-ui,sans-serif; min-height:100vh;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 15% 8%,rgba(109,93,252,.18),transparent 28%),
-    radial-gradient(circle at 90% 35%,rgba(33,212,253,.10),transparent 25%),
-    linear-gradient(180deg,#f4efe6 0%,#0d1220 100%);
-  padding:18px; -webkit-font-smoothing:antialiased;
-}
-.container{width:min(100%,920px);margin:auto}
-.header{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  margin-bottom:16px;padding:9px 2px 17px;border-bottom:1px solid var(--line)
-}
-.logo{display:flex;align-items:center;gap:11px}
-.logo-mark{
-  width:43px;height:43px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;
-  font-family:"Manrope",sans-serif;font-size:18px;font-weight:700;
-  box-shadow:0 10px 28px rgba(109,93,252,.30)
-}
-.logo strong{font-size:15px;font-weight:800}
-.logo small{display:block;margin-top:3px;color:var(--muted);font-size:10px}
-.badge{
-  padding:7px 11px;border:1px solid rgba(33,212,253,.25);
-  border-radius:999px;background:rgba(33,212,253,.07);
-  color:#79e7ff;font-size:9px;font-weight:800
-}
-.hero{
-  display:grid;grid-template-columns:1fr .8fr;gap:34px;align-items:center;
-  position:relative;overflow:hidden;padding:clamp(30px,6vw,55px);
-  border:1px solid var(--line);border-radius:34px;
-  background:linear-gradient(135deg,#111727 0%,#0d1321 100%);
-  box-shadow:var(--shadow)
-}
-.hero:before{
-  content:"";position:absolute;width:300px;height:300px;border-radius:50%;
-  right:-140px;top:-145px;
-  background:radial-gradient(circle,rgba(109,93,252,.30),transparent 68%)
-}
-.hero:after{
-  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
-  left:-125px;bottom:-125px;background:rgba(33,212,253,.07)
-}
-.kicker{
-  position:relative;display:inline-flex;align-items:center;padding:7px 11px;
-  margin-bottom:17px;border-radius:999px;background:rgba(109,93,252,.10);
-  border:1px solid rgba(109,93,252,.28);color:#a9a0ff;font-size:9px;
-  font-weight:800;letter-spacing:.1em;text-transform:uppercase
-}
-.hero h1{
-  position:relative;max-width:570px;margin-bottom:16px;
-  font-family:"Manrope",sans-serif;font-size:clamp(38px,6vw,59px);
-  line-height:1.03;letter-spacing:-.06em;font-weight:700
-}
-.hero h1 span{
-  background:linear-gradient(90deg,#8c80ff,#54e4ff);
-  -webkit-background-clip:text;background-clip:text;color:transparent
-}
-.hero p{
-  position:relative;max-width:570px;margin-bottom:25px;
-  color:var(--muted);font-size:14px;line-height:1.75
-}
-.cta{
-  position:relative;display:inline-flex;align-items:center;justify-content:center;
-  gap:11px;width:min(100%,350px);min-height:52px;padding:14px 20px;
-  border-radius:13px;background:linear-gradient(90deg,var(--primary),#6256ec);
-  color:#fff;text-decoration:none;font-size:13px;font-weight:800;
-  box-shadow:0 13px 28px rgba(109,93,252,.25);transition:.2s ease
-}
-.cta:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.cta span{font-size:17px}
-.plate{
-  min-height:285px;border-radius:23px;display:grid;place-items:center;
-  position:relative;background:linear-gradient(145deg,#171e30,#0d1320);
-  border:1px solid #2b3449;overflow:hidden
-}
-.plate:before{
-  content:"";position:absolute;width:220px;height:220px;border-radius:50%;
-  border:1px solid rgba(109,93,252,.35);box-shadow:0 0 0 24px rgba(109,93,252,.04),0 0 0 48px rgba(33,212,253,.025)
-}
-.book-cover{
-  width:190px;height:225px;padding:22px;display:flex;flex-direction:column;
-  justify-content:space-between;position:relative;z-index:1;
-  background:linear-gradient(145deg,#6658ee,#28235f);color:#fff;
-  border:1px solid rgba(255,255,255,.15);border-radius:12px;
-  box-shadow:18px 20px 38px rgba(0,0,0,.38);transform:rotate(-4deg)
-}
-.book-cover span{font-size:9px;letter-spacing:.16em;font-weight:800;color:#b8f4ff}
-.book-cover strong{font-family:"Manrope",sans-serif;font-size:25px;line-height:1.02;letter-spacing:-.04em}
-.book-cover i{width:45px;height:2px;background:var(--accent)}
-.book-cover small{font-size:9px;opacity:.78}
-.section-title{
-  font-family:"Manrope",sans-serif;font-size:29px;letter-spacing:-.04em;margin:32px 0 14px
-}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card{
-  min-height:170px;padding:19px;border:1px solid var(--line);border-radius:18px;
-  background:linear-gradient(145deg,#121827,#0e1420);
-  box-shadow:0 10px 28px rgba(0,0,0,.20);transition:.2s ease
-}
-.card:hover{transform:translateY(-4px);border-color:rgba(109,93,252,.55);box-shadow:0 17px 34px rgba(0,0,0,.32)}
-.card:nth-child(2){background:linear-gradient(145deg,#111b29,#10202b)}
-.card:nth-child(3){background:linear-gradient(145deg,#191728,#141321)}
-.icon{
-  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
-  margin-bottom:17px;background:rgba(109,93,252,.12);color:#9d94ff;font-size:18px
-}
-.card h3{font-size:14px;margin-bottom:7px}
-.card p{font-size:11px;color:var(--muted);line-height:1.65}
-.tips{
-  margin-top:12px;padding:25px;border-radius:22px;
-  background:linear-gradient(135deg,#171d36,#11182a);
-  border:1px solid #2d3650;box-shadow:0 18px 40px rgba(0,0,0,.25)
-}
-.tips h2{font-family:"Manrope",sans-serif;font-size:27px;letter-spacing:-.04em;margin-bottom:14px}
-.tips ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.tips li{
-  padding:11px 12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;
-  background:rgba(255,255,255,.035);font-size:12px;line-height:1.5
-}
-.tips li:before{content:"→";font-weight:800;margin-right:8px;color:var(--accent)}
-.footer{text-align:center;color:#778197;font-size:10px;padding:22px 5px}
-@media(max-width:680px){
-  body{padding:10px}.header{padding:7px 2px 12px}
-  .logo-mark{width:39px;height:39px;border-radius:12px}
-  .logo strong{font-size:14px}.logo small{font-size:9px}.badge{font-size:8px}
-  .hero{grid-template-columns:1fr;padding:27px 18px;border-radius:21px;gap:22px}
-  .hero h1{font-size:clamp(35px,11vw,48px)}.hero p{font-size:13px;line-height:1.65}
-  .cta{width:100%}.plate{min-height:220px}.book-cover{width:150px;height:180px;padding:17px}
-  .book-cover strong{font-size:21px}.section-title{font-size:26px;margin-top:27px}
-  .grid{grid-template-columns:1fr;gap:9px}.card{min-height:auto;display:grid;grid-template-columns:40px 1fr;column-gap:12px;align-items:center;padding:15px}
-  .icon{grid-row:span 2;margin:0}.tips{padding:20px;border-radius:18px}.tips ul{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
-</style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #21183F 0%, #0B0913 45%, #07070D 100%);
+      color: var(--text);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 14px 30px;
+    }
+
+    .page {
+      position: relative;
+      overflow: hidden;
+      width: min(100%, 960px);
+      min-height: calc(100vh - 28px);
+      background: rgba(18, 16, 29, 0.92);
+      border-radius: 32px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 120px 52px 74px;
+      text-align: center;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      top: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(139, 92, 246, .22), transparent 68%);
+      pointer-events: none;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .lock-wrap {
+      width: 204px;
+      height: 204px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      margin-bottom: 45px;
+    }
+
+    .lock-wrap svg {
+      width: 204px;
+      height: 204px;
+      overflow: visible;
+    }
+
+    .headline {
+      margin: 0;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 1.12;
+      letter-spacing: -2.8px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .headline .green {
+      display: block;
+      color: var(--green);
+      margin-top: 3px;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 43px auto 0;
+      font-size: clamp(22px, 2.6vw, 31px);
+      line-height: 1.48;
+      letter-spacing: -0.35px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .small-divider {
+      width: 106px;
+      height: 3px;
+      background: #302B48;
+      border-radius: 10px;
+      margin: 68px 0 72px;
+    }
+
+    .instruction {
+      margin: 0;
+      max-width: 650px;
+      font-size: clamp(23px, 2.7vw, 31px);
+      line-height: 1.45;
+      color: #E4E1EF;
+      letter-spacing: -0.45px;
+    }
+
+    .access-button {
+      margin-top: 57px;
+      width: min(100%, 552px);
+      min-height: 116px;
+      border: 0;
+      border-radius: 60px;
+      background: linear-gradient(105deg, #7C3AED, #06B6D4);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+      font-size: clamp(24px, 3vw, 35px);
+      font-weight: 700;
+      letter-spacing: -0.7px;
+      cursor: pointer;
+      box-shadow: 0 18px 40px rgba(91, 33, 182, 0.28);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .access-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(6, 182, 212, 0.22);
+    }
+
+    .access-button:active {
+      transform: translateY(0);
+    }
+
+    .access-button:focus-visible {
+      outline: 4px solid rgba(34, 211, 238, .28);
+      outline-offset: 5px;
+    }
+
+    .shield {
+      width: 49px;
+      height: 57px;
+      flex: 0 0 auto;
+    }
+
+    .footer {
+      width: min(100%, 750px);
+      border-top: 2px solid var(--line);
+      margin-top: 136px;
+      padding-top: 46px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 47px;
+      color: #9893AA;
+      font-size: clamp(19px, 2.2vw, 27px);
+    }
+
+    .footer-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      white-space: nowrap;
+    }
+
+    .footer-divider {
+      height: 48px;
+      width: 2px;
+      background: #302B48;
+    }
+
+    .footer svg {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 0;
+      }
+
+      .page {
+      position: relative;
+      overflow: hidden;
+        min-height: 100vh;
+        border-radius: 0;
+        background: rgba(10, 9, 17, 0.96);
+        padding: 85px 24px 45px;
+      }
+
+      .page::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      top: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(139, 92, 246, .22), transparent 68%);
+      pointer-events: none;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .lock-wrap {
+        width: 145px;
+        height: 145px;
+        margin-bottom: 32px;
+      }
+
+      .lock-wrap svg {
+        width: 145px;
+        height: 145px;
+      }
+
+      .headline {
+        letter-spacing: -1.8px;
+      }
+
+      .subtitle {
+        margin-top: 30px;
+      }
+
+      .small-divider {
+        margin: 48px 0 50px;
+      }
+
+      .instruction {
+        font-size: 22px;
+      }
+
+      .access-button {
+        min-height: 82px;
+        margin-top: 40px;
+        gap: 20px;
+        font-size: 23px;
+      }
+
+      .shield {
+        width: 34px;
+        height: 40px;
+      }
+
+      .footer {
+        margin-top: 90px;
+        padding-top: 30px;
+        gap: 17px;
+        font-size: 16px;
+      }
+
+      .footer-link {
+        gap: 9px;
+      }
+
+      .footer-divider {
+        height: 32px;
+      }
+
+      .footer svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .page {
+      position: relative;
+      overflow: hidden;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .footer {
+        gap: 11px;
+      }
+
+      .footer-link {
+        gap: 6px;
+      }
+
+      .footer svg {
+        width: 21px;
+        height: 21px;
+      }
+    }
+  </style>
 </head>
 <body>
-<main class="container">
-<header class="header">
-  <div class="logo">
-    <div class="logo-mark">N</div>
-    <div><strong>ATELIÊ</strong><small>ideias que ficam</small></div>
-  </div>
-  <div class="badge">Coleção 01</div>
-</header>
+  <main class="page">
+    <div class="lock-wrap" aria-hidden="true">
+      <svg viewBox="0 0 204 204" role="img">
+        <circle cx="102" cy="102" r="91" fill="none" stroke="#302B48" stroke-width="11"/>
+        <path d="M102 11 A91 91 0 0 1 193 102" fill="none" stroke="#22D3EE"
+              stroke-width="11" stroke-linecap="round"/>
+        <g fill="#8B5CF6">
+          <path d="M72 85V65c0-16.6 13.4-30 30-30s30 13.4 30 30v20h-13V65c0-9.4-7.6-17-17-17s-17 7.6-17 17v20H72Z"/>
+          <rect x="51" y="78" width="102" height="76" rx="15"/>
+        </g>
+        <circle cx="102" cy="109" r="13" fill="#fff"/>
+        <rect x="97" y="117" width="10" height="22" rx="5" fill="#fff"/>
+      </svg>
+    </div>
 
-<section class="hero">
-  <div>
-    <div class="kicker">CURIOSIDADE EM MOVIMENTO</div>
-    <h1>Olhe de novo.<br><span>Pense diferente.</span></h1>
-    <p>Um espaço editorial para reunir referências, perguntas e pequenas descobertas que ajudam a enxergar o cotidiano com outros olhos.</p>
-    <a class="cta" href="#principios">Entrar no ateliê <span>↓</span></a>
-  </div>
-  <div class="plate" aria-hidden="true">
-  <div class="book-cover">
-    <span>NÚCLEO</span><strong>Novas<br>ideias.<br>Novos caminhos.</strong>
-    <i></i><small>Inspiração e descoberta</small>
-  </div>
-</div>
-  </div>
-</section>
+    <h1 class="headline">
+      Encontre novas
+      <span class="green">oportunidades.</span>
+    </h1>
 
-<h2 class="section-title" id="principios">Coleção 01 por onde começar</h2>
-<section class="grid">
-  <article class="card"><div class="icon">✦</div><h3>Perspectivas que conectam</h3><p>Referências para descobrir conceitos e enxergar assuntos por novos ângulos.</p></article>
-  <article class="card"><div class="icon">◈</div><h3>Ideias em movimento</h3><p>Conteúdos diretos para estimular a curiosidade e abrir espaço para novas ideias.</p></article>
-  <article class="card"><div class="icon">↗</div><h3>Descoberta contínua</h3><p>Materiais para explorar temas, desenvolver repertório e continuar avançando.</p></article>
-</section>
+    <p class="subtitle">
+      Informações e oportunidades<br />
+      organizadas em um só lugar<br />
+      para ajudar você a escolher melhor.
+    </p>
 
-<section class="tips">
-  <h2>Uma boa ideia pode mudar sua perspectiva</h2>
-  <ul>
-    <li>Coleção 01 conteúdos que despertam sua curiosidade.</li>
-    <li>Descubra uma perspectiva diferente todos os dias.</li>
-    <li>Amplie seu repertório com novas referências.</li>
-    <li>Transforme curiosidade em novas possibilidades.</li>
-  </ul>
-</section>
+    <div class="small-divider" aria-hidden="true"></div>
 
-<footer class="footer">ATELIÊ. Conteúdo apresentado de forma simples, moderna e acessível.</footer>
-</main>
+    <p class="instruction">
+      Clique no botão abaixo para<br />
+      ver as oportunidades disponíveis
+    </p>
+
+    <button class="access-button" type="button" onclick="acessarPlataforma()">
+      <svg class="shield" viewBox="0 0 49 57" aria-hidden="true">
+        <path d="M24.5 2.5 45 10v16.3c0 13.4-8.4 23.1-20.5 28.2C12.4 49.4 4 39.7 4 26.3V10l20.5-7.5Z"
+              fill="none" stroke="#A78BFA" stroke-width="4"/>
+        <path d="m14.5 28.5 6.5 6.5 13.5-14" fill="none" stroke="#A78BFA"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>VER AGORA</span>
+    </button>
+
+    <footer class="footer">
+      <div class="footer-link">
+        <svg viewBox="0 0 34 34" aria-hidden="true">
+          <path d="M17 3 29 7.5v9.6c0 7.7-4.8 12.3-12 14.9C9.8 29.4 5 24.8 5 17.1V7.5L17 3Z"
+                fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <path d="m11.5 17 3.5 3.5 7.5-8" fill="none" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Privacidade</span>
+      </div>
+
+      <div class="footer-divider" aria-hidden="true"></div>
+
+      <div class="footer-link">
+        <svg viewBox="0 0 34 34" aria-hidden="true">
+          <path d="M9 3.5h11l6 6v21H9z" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linejoin="round"/>
+          <path d="M20 3.5v6h6M13 15h9M13 20h9M13 25h6" fill="none"
+                stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span>Termos de Uso</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ALTERE SOMENTE ESTA LINHA QUANDO QUISER TROCAR O LINK DO BOTÃO
+const LINK_ACAO = "https://elegant-puppy-desenrolando.netlify.app/";
+
+function acessarPlataforma() {
+      window.location.href = LINK_ACAO;
+    }
+  </script>
 </body>
 </html>
