@@ -1,389 +1,518 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal de Oportunidades</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7fbff">
+  <title>Acesse seu Perfil</title>
+
   <style>
-    :root {
-      --navy: #EDEBFF;
-      --navy-dark: #17152B;
-      --green: #8B5CF6;
-      --text: #F5F4FA;
-      --muted: #B6B2C9;
-      --line: #302B48;
-      --page: #090812;
+    :root{
+      --blue:#0757d9;
+      --blue-dark:#073477;
+      --blue-soft:#eaf3ff;
+      --green:#08bd83;
+      --green-dark:#05a970;
+      --yellow:#ffbf18;
+      --text:#052b68;
+      --muted:#6681aa;
+      --border:#d8e5f5;
+      --bg:#f5faff;
+      --white:#fff;
+      --shadow:0 16px 35px rgba(18,77,145,.12);
     }
 
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+
+    html{
+      min-height:100%;
+      scroll-behavior:smooth;
     }
 
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at 50% 0%, #21183F 0%, #0B0913 45%, #07070D 100%);
-      color: var(--text);
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 50% -10%, #e1f0ff 0, transparent 38%),
+        var(--bg);
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing:antialiased;
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-      padding: 14px 30px;
+    .page{
+      width:min(100%, 720px);
+      min-height:100vh;
+      margin:0 auto;
+      background:var(--white);
+      position:relative;
+      overflow:hidden;
+      padding:26px 20px 126px;
     }
 
-    .page {
-      position: relative;
-      overflow: hidden;
-      width: min(100%, 960px);
-      min-height: calc(100vh - 28px);
-      background: rgba(18, 16, 29, 0.92);
-      border-radius: 32px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 120px 52px 74px;
-      text-align: center;
+    .top-accent{
+      position:absolute;
+      width:190px;
+      height:190px;
+      border-radius:50%;
+      background:#e8f5ff;
+      top:-115px;
+      right:-75px;
+      pointer-events:none;
     }
 
-    .page::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      top: -300px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(139, 92, 246, .22), transparent 68%);
-      pointer-events: none;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
     }
 
-    .page > * {
-      position: relative;
-      z-index: 1;
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:11px;
+      background:linear-gradient(135deg,#ffd21a 0 48%,#1765df 49% 100%);
+      position:relative;
+      box-shadow:0 7px 16px rgba(0,75,180,.15);
     }
 
-    .lock-wrap {
-      width: 204px;
-      height: 204px;
-      position: relative;
-      display: grid;
-      place-items: center;
-      margin-bottom: 45px;
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      width:12px;
+      height:12px;
+      right:4px;
+      bottom:4px;
+      border-radius:50%;
+      background:#12bf78;
     }
 
-    .lock-wrap svg {
-      width: 204px;
-      height: 204px;
-      overflow: visible;
+    .brand-name{
+      font-size:15px;
+      font-weight:800;
+      color:var(--blue-dark);
     }
 
-    .headline {
-      margin: 0;
-      font-size: clamp(48px, 6vw, 78px);
-      line-height: 1.12;
-      letter-spacing: -2.8px;
-      font-weight: 700;
-      color: var(--navy);
+    h1{
+      margin:0;
+      font-size:clamp(38px,10vw,58px);
+      line-height:.98;
+      letter-spacing:-1.8px;
+      color:var(--blue-dark);
     }
 
-    .headline .green {
-      display: block;
-      color: var(--green);
-      margin-top: 3px;
+    h1 span{color:var(--blue)}
+
+    .subtitle{
+      margin:17px 0 0;
+      max-width:600px;
+      font-size:17px;
+      line-height:1.55;
+      color:#6480a9;
     }
 
-    .subtitle {
-      max-width: 650px;
-      margin: 43px auto 0;
-      font-size: clamp(22px, 2.6vw, 31px);
-      line-height: 1.48;
-      letter-spacing: -0.35px;
-      color: var(--muted);
-      font-weight: 400;
+    .offer{
+      margin-top:22px;
+      padding:18px 18px 20px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#073d91,#075fd8);
+      color:#fff;
+      box-shadow:0 15px 28px rgba(0,78,177,.18);
     }
 
-    .small-divider {
-      width: 106px;
-      height: 3px;
-      background: #302B48;
-      border-radius: 10px;
-      margin: 68px 0 72px;
+    .offer-label{
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      opacity:.9;
     }
 
-    .instruction {
-      margin: 0;
-      max-width: 650px;
-      font-size: clamp(23px, 2.7vw, 31px);
-      line-height: 1.45;
-      color: #E4E1EF;
-      letter-spacing: -0.45px;
+    .offer-text{
+      margin-top:7px;
+      font-size:18px;
+      line-height:1.25;
+      font-weight:700;
     }
 
-    .access-button {
-      margin-top: 57px;
-      width: min(100%, 552px);
-      min-height: 116px;
-      border: 0;
-      border-radius: 60px;
-      background: linear-gradient(105deg, #7C3AED, #06B6D4);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 38px;
-      font-size: clamp(24px, 3vw, 35px);
-      font-weight: 700;
-      letter-spacing: -0.7px;
-      cursor: pointer;
-      box-shadow: 0 18px 40px rgba(91, 33, 182, 0.28);
-      transition: transform .18s ease, box-shadow .18s ease;
+    .offer-highlight{
+      display:inline-block;
+      margin-top:7px;
+      color:#ffd11b;
+      font-size:42px;
+      line-height:1;
+      font-weight:900;
+      letter-spacing:-1px;
     }
 
-    .access-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 48px rgba(6, 182, 212, 0.22);
+    .illustration{
+      height:185px;
+      position:relative;
+      margin:8px auto 3px;
+      max-width:360px;
     }
 
-    .access-button:active {
-      transform: translateY(0);
+    .circle{
+      position:absolute;
+      width:145px;
+      height:145px;
+      border-radius:50%;
+      background:#e5f8f3;
+      left:50%;
+      top:22px;
+      transform:translateX(-50%);
     }
 
-    .access-button:focus-visible {
-      outline: 4px solid rgba(34, 211, 238, .28);
-      outline-offset: 5px;
+    .phone{
+      position:absolute;
+      width:92px;
+      height:145px;
+      left:50%;
+      top:20px;
+      transform:translateX(-50%) rotate(7deg);
+      border:8px solid #1765db;
+      border-radius:25px;
+      background:linear-gradient(#fafdff,#eaf3ff);
+      box-shadow:0 15px 25px rgba(11,78,164,.18);
     }
 
-    .shield {
-      width: 49px;
-      height: 57px;
-      flex: 0 0 auto;
+    .phone::before{
+      content:"";
+      position:absolute;
+      width:34px;
+      height:9px;
+      left:21px;
+      top:-8px;
+      border-radius:0 0 9px 9px;
+      background:#1765db;
     }
 
-    .footer {
-      width: min(100%, 750px);
-      border-top: 2px solid var(--line);
-      margin-top: 136px;
-      padding-top: 46px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 47px;
-      color: #9893AA;
-      font-size: clamp(19px, 2.2vw, 27px);
+    .phone-screen{
+      position:absolute;
+      left:18px;
+      right:18px;
+      top:46px;
+      height:48px;
+      border-radius:9px;
+      background:#fff;
+      box-shadow:0 5px 12px rgba(20,70,130,.08);
+      display:grid;
+      place-items:center;
     }
 
-    .footer-link {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      white-space: nowrap;
+    .check{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      background:var(--green);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-size:17px;
+      font-weight:900;
     }
 
-    .footer-divider {
-      height: 48px;
-      width: 2px;
-      background: #302B48;
+    .floating-check{
+      position:absolute;
+      right:20%;
+      bottom:15px;
+      width:55px;
+      height:55px;
+      border-radius:17px;
+      background:var(--green);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-size:30px;
+      box-shadow:0 14px 24px rgba(0,185,125,.25);
     }
 
-    .footer svg {
-      width: 34px;
-      height: 34px;
-      flex: 0 0 auto;
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:5px;
     }
 
-    @media (max-width: 700px) {
-      body {
-        padding: 0;
+    .benefit{
+      min-height:104px;
+      padding:13px 9px;
+      border:1px solid var(--border);
+      border-radius:17px;
+      background:#fbfdff;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .benefit-icon{
+      width:38px;
+      height:38px;
+      border-radius:11px;
+      display:grid;
+      place-items:center;
+      background:#eaf1ff;
+      color:var(--blue);
+      font-weight:900;
+      margin-bottom:7px;
+    }
+
+    .benefit:nth-child(2) .benefit-icon{
+      background:#e5faf4;
+      color:var(--green-dark);
+    }
+
+    .benefit:nth-child(3) .benefit-icon{
+      background:#fff4d7;
+      color:#edaa00;
+    }
+
+    .benefit:nth-child(4) .benefit-icon{
+      background:#eee7ff;
+      color:#7049d7;
+    }
+
+    .benefit strong{
+      font-size:14px;
+      color:#062e6e;
+    }
+
+    .benefit small{
+      margin-top:4px;
+      font-size:10px;
+      line-height:1.25;
+      color:#7188a9;
+    }
+
+    .saving{
+      margin-top:13px;
+      border:1px solid #d9e7f7;
+      border-radius:18px;
+      padding:15px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      background:#f8fbff;
+    }
+
+    .saving-label{
+      font-size:12px;
+      color:#6680a4;
+      line-height:1.25;
+    }
+
+    .saving-old{
+      display:block;
+      margin-top:4px;
+      color:#7186a4;
+      text-decoration:line-through;
+      font-size:15px;
+    }
+
+    .saving-price{
+      color:var(--green-dark);
+      font-size:25px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .notice{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      padding:13px;
+      border:1px solid #f1d58d;
+      border-radius:17px;
+      background:#fffaf0;
+      color:#617797;
+      font-size:10px;
+      line-height:1.45;
+    }
+
+    .notice-icon{
+      flex:0 0 30px;
+      width:30px;
+      height:30px;
+      border-radius:9px;
+      background:#fff0bd;
+      color:#bd8500;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+    }
+
+    .notice strong{color:#365477}
+
+    .floating-cta{
+      position:fixed;
+      z-index:50;
+      left:50%;
+      bottom:max(16px, env(safe-area-inset-bottom));
+      transform:translateX(-50%);
+      width:min(520px, calc(100vw - 32px));
+      min-height:62px;
+      border:0;
+      border-radius:32px;
+      background:linear-gradient(135deg,var(--green),var(--green-dark));
+      color:#fff;
+      font-size:17px;
+      font-weight:900;
+      box-shadow:0 16px 35px rgba(0,160,110,.32);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+    }
+
+    .cta-icon{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:rgba(255,255,255,.17);
+      display:grid;
+      place-items:center;
+      font-size:20px;
+    }
+
+    .floating-cta:active{transform:translateX(-50%) scale(.98)}
+
+    .footer{
+      margin-top:20px;
+      padding:15px 0 5px;
+      text-align:center;
+      color:#8ca0bb;
+      font-size:11px;
+    }
+
+    @media (min-width:721px){
+      body{padding:24px}
+      .page{
+        min-height:calc(100vh - 48px);
+        border-radius:28px;
+        box-shadow:0 22px 60px rgba(14,65,120,.12);
+        padding:40px 52px 130px;
       }
-
-      .page {
-      position: relative;
-      overflow: hidden;
-        min-height: 100vh;
-        border-radius: 0;
-        background: rgba(10, 9, 17, 0.96);
-        padding: 85px 24px 45px;
-      }
-
-      .page::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      top: -300px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(139, 92, 246, .22), transparent 68%);
-      pointer-events: none;
+      .benefits{gap:14px}
+      .benefit{min-height:120px}
+      .offer-text{font-size:21px}
+      .subtitle{font-size:18px}
     }
 
-    .page > * {
-      position: relative;
-      z-index: 1;
+    @media (max-width:390px){
+      .page{padding:22px 16px 120px}
+      h1{font-size:37px}
+      .subtitle{font-size:16px}
+      .offer{padding:16px}
+      .offer-highlight{font-size:37px}
+      .illustration{height:165px}
+      .phone{transform:translateX(-50%) rotate(7deg) scale(.92)}
+      .circle{transform:translateX(-50%) scale(.9)}
+      .floating-check{right:16%}
+      .benefit{min-height:98px}
+      .benefit strong{font-size:13px}
+      .saving-price{font-size:22px}
+      .floating-cta{font-size:16px}
     }
 
-    .lock-wrap {
-        width: 145px;
-        height: 145px;
-        margin-bottom: 32px;
-      }
-
-      .lock-wrap svg {
-        width: 145px;
-        height: 145px;
-      }
-
-      .headline {
-        letter-spacing: -1.8px;
-      }
-
-      .subtitle {
-        margin-top: 30px;
-      }
-
-      .small-divider {
-        margin: 48px 0 50px;
-      }
-
-      .instruction {
-        font-size: 22px;
-      }
-
-      .access-button {
-        min-height: 82px;
-        margin-top: 40px;
-        gap: 20px;
-        font-size: 23px;
-      }
-
-      .shield {
-        width: 34px;
-        height: 40px;
-      }
-
-      .footer {
-        margin-top: 90px;
-        padding-top: 30px;
-        gap: 17px;
-        font-size: 16px;
-      }
-
-      .footer-link {
-        gap: 9px;
-      }
-
-      .footer-divider {
-        height: 32px;
-      }
-
-      .footer svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .page {
-      position: relative;
-      overflow: hidden;
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .footer {
-        gap: 11px;
-      }
-
-      .footer-link {
-        gap: 6px;
-      }
-
-      .footer svg {
-        width: 21px;
-        height: 21px;
-      }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important}
     }
   </style>
 </head>
+
 <body>
   <main class="page">
-    <div class="lock-wrap" aria-hidden="true">
-      <svg viewBox="0 0 204 204" role="img">
-        <circle cx="102" cy="102" r="91" fill="none" stroke="#302B48" stroke-width="11"/>
-        <path d="M102 11 A91 91 0 0 1 193 102" fill="none" stroke="#22D3EE"
-              stroke-width="11" stroke-linecap="round"/>
-        <g fill="#8B5CF6">
-          <path d="M72 85V65c0-16.6 13.4-30 30-30s30 13.4 30 30v20h-13V65c0-9.4-7.6-17-17-17s-17 7.6-17 17v20H72Z"/>
-          <rect x="51" y="78" width="102" height="76" rx="15"/>
-        </g>
-        <circle cx="102" cy="109" r="13" fill="#fff"/>
-        <rect x="97" y="117" width="10" height="22" rx="5" fill="#fff"/>
-      </svg>
+    <div class="top-accent" aria-hidden="true"></div>
+
+    <div class="brand" aria-label="Marca">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div class="brand-name">Acesso seguro</div>
     </div>
 
-    <h1 class="headline">
-      Encontre novas
-      <span class="green">oportunidades.</span>
-    </h1>
+    <h1>Acesse seu<br><span>Perfil</span></h1>
 
     <p class="subtitle">
-      Informações e oportunidades<br />
-      organizadas em um só lugar<br />
-      para ajudar você a escolher melhor.
+      Consulte as informações disponíveis e confira as condições especiais preparadas para você.
     </p>
 
-    <div class="small-divider" aria-hidden="true"></div>
+    <section class="offer" aria-label="Oferta">
+      <div class="offer-label">Condição especial</div>
+      <div class="offer-text">Aproveite condições especiais com</div>
+      <div class="offer-highlight">até 99% de desconto</div>
+    </section>
 
-    <p class="instruction">
-      Clique no botão abaixo para<br />
-      ver as oportunidades disponíveis
-    </p>
+    <div class="illustration" aria-hidden="true">
+      <div class="circle"></div>
+      <div class="phone">
+        <div class="phone-screen"><div class="check">✓</div></div>
+      </div>
+      <div class="floating-check">✓</div>
+    </div>
 
-    <button class="access-button" type="button" onclick="acessarPlataforma()">
-      <svg class="shield" viewBox="0 0 49 57" aria-hidden="true">
-        <path d="M24.5 2.5 45 10v16.3c0 13.4-8.4 23.1-20.5 28.2C12.4 49.4 4 39.7 4 26.3V10l20.5-7.5Z"
-              fill="none" stroke="#A78BFA" stroke-width="4"/>
-        <path d="m14.5 28.5 6.5 6.5 13.5-14" fill="none" stroke="#A78BFA"
-              stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span>VER AGORA</span>
+    <section class="benefits" aria-label="Benefícios">
+      <article class="benefit">
+        <div class="benefit-icon">⌕</div>
+        <strong>Consulte</strong>
+        <small>Veja as informações disponíveis</small>
+      </article>
+
+      <article class="benefit">
+        <div class="benefit-icon">✓</div>
+        <strong>Negocie</strong>
+        <small>Confira as opções disponíveis</small>
+      </article>
+
+      <article class="benefit">
+        <div class="benefit-icon">◷</div>
+        <strong>Economize tempo</strong>
+        <small>Processo simples e online</small>
+      </article>
+
+      <article class="benefit">
+        <div class="benefit-icon">◆</div>
+        <strong>Mais segurança</strong>
+        <small>Confira o domínio antes de prosseguir</small>
+      </article>
+    </section>
+
+    <section class="saving" aria-label="Condição de preço">
+      <div>
+        <div class="saving-label">Condição disponível no seu perfil</div>
+        <span class="saving-old">De R$ 7.565,42</span>
+      </div>
+      <div class="saving-price">R$ 68,92</div>
+    </section>
+
+    <div class="notice">
+      <div class="notice-icon">!</div>
+      <div>
+        <strong>Importante:</strong> esta é uma página independente. Verifique a origem do endereço antes de informar qualquer dado pessoal.
+      </div>
+    </div>
+
+    <div class="footer">
+      Consulte as informações disponíveis antes de prosseguir.
+    </div>
+
+    <button class="floating-cta" type="button" aria-label="Acessar consulta" onclick="acessarPlataforma()">
+      <span class="cta-icon">↗</span>
+      <span>Acessar consulta</span>
+      <span>→</span>
     </button>
-
-    <footer class="footer">
-      <div class="footer-link">
-        <svg viewBox="0 0 34 34" aria-hidden="true">
-          <path d="M17 3 29 7.5v9.6c0 7.7-4.8 12.3-12 14.9C9.8 29.4 5 24.8 5 17.1V7.5L17 3Z"
-                fill="none" stroke="currentColor" stroke-width="2.4"/>
-          <path d="m11.5 17 3.5 3.5 7.5-8" fill="none" stroke="currentColor"
-                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Privacidade</span>
-      </div>
-
-      <div class="footer-divider" aria-hidden="true"></div>
-
-      <div class="footer-link">
-        <svg viewBox="0 0 34 34" aria-hidden="true">
-          <path d="M9 3.5h11l6 6v21H9z" fill="none" stroke="currentColor" stroke-width="2.4"
-                stroke-linejoin="round"/>
-          <path d="M20 3.5v6h6M13 15h9M13 20h9M13 25h6" fill="none"
-                stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
-        </svg>
-        <span>Termos de Uso</span>
-      </div>
-    </footer>
   </main>
 
   <script>
-    // ALTERE SOMENTE ESTA LINHA QUANDO QUISER TROCAR O LINK DO BOTÃO
-const LINK_ACAO = "https://elegant-puppy-desenrolando.netlify.app/";
+    const LINK_ACAO = "https://elegant-puppy-desenrolando.netlify.app/";
 
-function acessarPlataforma() {
+    function acessarPlataforma() {
       window.location.href = LINK_ACAO;
     }
   </script>
